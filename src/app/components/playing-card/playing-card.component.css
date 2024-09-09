@@ -1,15 +1,26 @@
 #card {
 	display: block;
 	width: 250px;
+	min-height: 400px;
 	padding: 10px;
 	border-radius: 10px;
 	box-shadow: 5px 5px 10px 0 grey;
 	background-color: rgb(221, 221, 221);
 }
 
+.marginInside {
+	min-height: 350px;
+}
 #inside {
 	padding: 5px;
+}
+
+.bgCThunder {
 	background-color: rgba(255, 252, 81, 0.676);
+}
+
+.bgCFire {
+	background-color: rgba(255, 120, 120, 0.676);
 }
 
 header {
@@ -64,7 +75,6 @@ figure#art {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 100px;
 }
 
 .capacity {
@@ -95,3 +105,20 @@ figure#art {
 	}
 
 }
+
+.weakness {
+	display: flex;
+	align-items: center;
+	margin-top: 1px;
+	
+	.weaknessIcon {
+		margin: 0 6px;
+	}
+
+	.weakness-text {
+		font-size: 12px;
+		font-family: sans-serif;
+		font-weight: 600;
+	}
+}
+
