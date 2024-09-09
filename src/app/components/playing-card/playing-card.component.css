@@ -13,6 +13,13 @@
 }
 #inside {
 	padding: 5px;
+	
+}
+#inside:first-child {
+	border-radius: 6px 6px 0 0;
+}
+#inside:last-child {
+	border-radius: 0 0 6px 6px ;
 }
 
 .bgCThunder {

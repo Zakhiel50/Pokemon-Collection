@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { PlayingCardComponent } from './components/playing-card/playing-card.component';
 import { Pokemon } from './models/pokemon.model';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    PlayingCardComponent
+    PlayingCardComponent,
+    SearchBarComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -14,6 +16,7 @@ import { Pokemon } from './models/pokemon.model';
 export class AppComponent {
   title = 'PokemonCollectionCards';
 
+  pathImg: string = "../../../assets/img/"
   pokemon1!: Pokemon
   pokemon2!: Pokemon
   bgCThunder = 'bgCThunder';
