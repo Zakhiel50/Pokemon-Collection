@@ -2,66 +2,139 @@ import { Component } from '@angular/core';
 import { PlayingCardComponent } from './components/playing-card/playing-card.component';
 import { Pokemon } from './models/pokemon.model';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     PlayingCardComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    NgFor
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+
   title = 'PokemonCollectionCards';
+  search = '';
+  history: string[] = []
 
   pathImg: string = "../../../assets/img/"
+  pokemons: Pokemon[] = [];
   pokemon1!: Pokemon
   pokemon2!: Pokemon
-  bgCThunder = 'bgCThunder';
-  bgCFire = 'bgCFire';
+  bgCThunder: string = 'bgCThunder';
+  bgCFire: string = 'bgCFire';
+  bgCGrass: string = 'bgCGrass';
+  bgCWater: string = 'bgCWater'
+  pokedexNumber: number = 0;
+  count:  number = 0
 
 
   constructor() {
-    this.pokemon1 = new Pokemon();
-    this.pokemon1.iconType = `${this.pokemon1.pathImg}electrik.png`;
-    this.pokemon1.backgroundColor = this.bgCThunder
-    this.pokemon1.pokemonImg = `${this.pokemon1.pathImg}pikachu.png`;
-    this.pokemon1.iconFirstAttack_type1 = `${this.pokemon1.pathImg}electrik.png`;
-    this.pokemon1.iconFirstAttack_type2 = ``;
-    this.pokemon1.iconSecondAttack_type1 = `${this.pokemon1.pathImg}electrik.png`;
-    this.pokemon1.iconSecondAttack_type2 = `${this.pokemon1.pathImg}electrik.png`;
-    this.pokemon1.name = "Pikachu";
-    this.pokemon1.hp = 60;
-    this.pokemon1.figureCaption = `N°0025 ${this.pokemon1.name}`;
-    this.pokemon1.firstAttack_name = "Geo Impact";
-    this.pokemon1.firstAttack_strength = 60;
-    this.pokemon1.firstAttack_description = "Attack with a electrik attack and great damages inflicted.";
-    this.pokemon1.secondAttack_name = "Electro Ball";
-    this.pokemon1.secondAttack_strength = 30;
-    this.pokemon1.secondAttack_description = "Attack with a electrik ball.";
-    this.pokemon1.weaknessIcon = 'kombat.png'
-    this.pokemon1.secondAttack = true
 
-
-    this.pokemon2 = new Pokemon();
-    this.pokemon2.iconType = `${this.pokemon1.pathImg}fire.png`;
-    this.pokemon2.backgroundColor = this.bgCFire
-    this.pokemon2.pokemonImg = `${this.pokemon1.pathImg}charmander.png`;
-    this.pokemon2.iconFirstAttack_type1 = `${this.pokemon1.pathImg}fire.png`;
-    this.pokemon2.iconFirstAttack_type2
-    this.pokemon2.iconSecondAttack_type1
-    this.pokemon2.iconSecondAttack_type2
-    this.pokemon2.name = "Charmander";
-    this.pokemon2.hp = 60;
-    this.pokemon2.figureCaption = `N°002 ${this.pokemon2.name}`;
-    this.pokemon2.firstAttack_name = "Ember";
-    this.pokemon2.firstAttack_strength = 60;
-    this.pokemon2.firstAttack_description = "Attack with a electrik attack and great damages inflicted.";
-    this.pokemon2.weaknessIcon = "water.png";
-    this.pokemon2.secondAttack = false
+    //Pokemons List
+    this.pokemons = [
+      {
+        pokedexNumber: 25,
+        index: this.pokedexNumber,
+        iconType: `${this.pathImg}electrik.png`,
+        backgroundColor: this.bgCThunder,
+        pokemonImg: `${this.pathImg}pikachu.png`,
+        iconFirstAttack_type1: `${this.pathImg}electrik.png`,
+        iconFirstAttack_type2: ``,
+        iconSecondAttack_type1: `${this.pathImg}electrik.png`,
+        iconSecondAttack_type2: `${this.pathImg}electrik.png`,
+        name: "Pikachu",
+        hp: 60,
+        figureCaption: `N°0${this.pokedexNumber} Pikachu`,
+        firstAttack_name: "Geo Impact",
+        firstAttack_strength: 60,
+        firstAttack_description: "Attack with a electrik attack and great damages inflicted.",
+        secondAttack_name: "Electro Ball",
+        secondAttack_strength: 30,
+        secondAttack_description: "Attack with a electrik ball.",
+        weaknessIcon: 'kombat.png',
+        secondAttack: true,
+        pathImg: this.pathImg
+      },
+      {
+        pokedexNumber: 2,
+        index: this.pokedexNumber,
+        iconType: `${this.pathImg}fire.png`,
+        backgroundColor: this.bgCFire,
+        pokemonImg: `${this.pathImg}charmander.png`,
+        iconFirstAttack_type1: `${this.pathImg}fire.png`,
+        iconFirstAttack_type2: '',
+        iconSecondAttack_type1: '',
+        iconSecondAttack_type2: '',
+        name: "Charmander",
+        hp: 60,
+        figureCaption: `N°00${this.pokedexNumber} Charmander`,
+        firstAttack_name: "Ember",
+        firstAttack_strength: 60,
+        firstAttack_description: "Attack with a fire attack and great damages inflicted.",
+        secondAttack_name: "",
+        secondAttack_strength: 0,
+        secondAttack_description: "",
+        weaknessIcon: "water.png",
+        secondAttack: false,
+        pathImg: this.pathImg
+      },
+      {
+        pokedexNumber: 1,
+        index: this.pokedexNumber,
+        iconType: `${this.pathImg}grass.png`,
+        backgroundColor: this.bgCGrass,
+        pokemonImg: `${this.pathImg}bulbasaur.png`,
+        iconFirstAttack_type1: `${this.pathImg}grass.png`,
+        iconFirstAttack_type2: `${this.pathImg}grass.png`,
+        iconSecondAttack_type1: '',
+        iconSecondAttack_type2: '',
+        name: "Bulbasaur",
+        hp: 70,
+        figureCaption: `N°00${this.pokedexNumber} Bulbasaur`,
+        firstAttack_name: "Razor Leaf",
+        firstAttack_strength: 50,
+        firstAttack_description: "Attack with a grass attack.",
+        secondAttack_name: "",
+        secondAttack_strength: 0,
+        secondAttack_description: "",
+        weaknessIcon: "fire.png",
+        secondAttack: false,
+        pathImg: this.pathImg
+      },
+      {
+        pokedexNumber: 3,
+        index: this.pokedexNumber,
+        iconType: `${this.pathImg}water.png`,
+        backgroundColor: this.bgCWater,
+        pokemonImg: `${this.pathImg}squirtle.png`,
+        iconFirstAttack_type1: `${this.pathImg}water.png`,
+        iconFirstAttack_type2: `${this.pathImg}water.png`,
+        iconSecondAttack_type1: '',
+        iconSecondAttack_type2: '',
+        name: "Squirtle",
+        hp: 70,
+        figureCaption: `N°00${this.pokedexNumber} Squirtle`,
+        firstAttack_name: "Bubble",
+        firstAttack_strength: 50,
+        firstAttack_description: "Attack with a big bubble.",
+        secondAttack_name: "",
+        secondAttack_strength: 0,
+        secondAttack_description: "",
+        weaknessIcon: "grass.png",
+        secondAttack: false,
+        pathImg: this.pathImg
+      }
+    ];
   }
   
+  addHistory () {
+    this.history.push(`${this.search},`)
+  }
 
 }

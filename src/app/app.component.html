@@ -1,7 +1,19 @@
 <section id="app-container">
-    <app-search-bar/>
+    <app-search-bar
+    (submit)="addHistory()"
+    [(search)]="search"
+    (searchChange)="search = $event"
+    />
+    <div class="searchText">
+        <p class="searchName">Your search:</p>
+        <p class="searchItems">{{search}} </p>
+    </div>
+    <div class="history">
+        Search history: <p *ngFor="let item of history">{{ item }}</p>
+    </div>
     <section id="card-list">
-        <app-playing-card [pokemon]="pokemon1" />
-        <app-playing-card [pokemon]="pokemon2" />
+        <div *ngFor="let pokemon of pokemons">
+            <app-playing-card [pokemon]="pokemon"></app-playing-card>
+        </div>
     </section>
 </section>

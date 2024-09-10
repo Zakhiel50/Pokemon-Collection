@@ -1,5 +1,7 @@
 export class Pokemon {
 
+    index: number = 0 ;
+    pokedexNumber: number = 0;
     pathImg: string = "../../../assets/img/"
     iconType: string= "electrik.png"
     pokemonImg: string= "pikachu.png"

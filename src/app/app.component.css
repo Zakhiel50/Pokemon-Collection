@@ -5,3 +5,28 @@
     align-items: center;
     justify-content: center;
 }
+
+.searchText {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+
+    .searchName {
+        width: 50%;
+        padding-right: 8px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .searchItems {
+        width: 50%;
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+.history {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

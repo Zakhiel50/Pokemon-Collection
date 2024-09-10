@@ -30,6 +30,14 @@
 	background-color: rgba(255, 120, 120, 0.676);
 }
 
+.bgCGrass {
+	background-color: rgba(139, 253, 162, 0.676);
+}
+
+.bgCWater {
+	background-color: hsla(194, 100%, 68%, 0.676);
+}
+
 header {
 	display: flex;
 	font-size: 16px;
