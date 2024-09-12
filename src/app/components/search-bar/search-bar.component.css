@@ -62,3 +62,13 @@ button:hover {
         justify-content: flex-start;
     }
 }
+
+@media screen and (width <= 500px) {
+    #search-bar {
+        width: 250px;
+    }
+
+    input {
+        flex-grow: 0;
+    }
+  }
