@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { PlayingCardComponent } from './components/playing-card/playing-card.component';
 import { Pokemon } from './models/pokemon.model';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,8 @@ import { NgFor } from '@angular/common';
   imports: [
     PlayingCardComponent,
     SearchBarComponent,
-    NgFor
+    NgFor,
+    NgIf
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -19,23 +20,52 @@ import { NgFor } from '@angular/common';
 export class AppComponent {
 
   title = 'PokemonCollectionCards';
-  search = '';
-  history: string[] = []
+  search = model<string>('');
+  actualSearch = model<string>(this.search());
+  history = model <string[]>([]);
 
-  pathImg: string = "../../../assets/img/"
+  pathImg: string = "../../../assets/img/";
   pokemons: Pokemon[] = [];
-  pokemon1!: Pokemon
-  pokemon2!: Pokemon
+  pokemon1!: Pokemon;
+  pokemon2!: Pokemon;
   bgCThunder: string = 'bgCThunder';
   bgCFire: string = 'bgCFire';
   bgCGrass: string = 'bgCGrass';
-  bgCWater: string = 'bgCWater'
+  bgCWater: string = 'bgCWater';
   pokedexNumber: number = 0;
-  count:  number = 0
+  pokemonName: string = '';
+
+  pokemonResult: Pokemon[] = [];
+  searchCompleted: boolean = false;
+
+  
+  selectedPokemonByPokedexNumber : number = 0;
+  searchResult: string = '';
+
+  /**
+   * Update search term and launch search.
+   * @param term - This is term used in searchBar. type: string
+   * @returns - nothing return.
+   */
+  searchInput(term: string) {
+    this.searchResult = term;
+    this.returnPokemonResult(this.search());
+    this.searchCompleted = true;
+    
+  }
+// je dois récupérer le nom et le numPokedex
+  returnPokemonResult(term: string) {
+    return this.pokemonResult = this.pokemons
+    .filter((pokemon: Pokemon) => pokemon.name.toLowerCase()
+    .includes(term.toLowerCase()));
+  }
 
 
   constructor() {
-
+    if (this.search() === '') {
+      this.searchCompleted = false;
+    }
+    
     //Pokemons List
     this.pokemons = [
       {
@@ -132,9 +162,4 @@ export class AppComponent {
       }
     ];
   }
-  
-  addHistory () {
-    this.history.push(`${this.search},`)
-  }
-
 }

@@ -1,18 +1,20 @@
 <section id="app-container">
     <app-search-bar
-    (submit)="addHistory()"
     [(search)]="search"
-    (searchChange)="search = $event"
+    (searchPokemonResult)="searchInput($event)"
     />
-    <div class="searchText">
-        <p class="searchName">Your search:</p>
-        <p class="searchItems">{{search}} </p>
-    </div>
-    <div class="history">
-        Search history: <p *ngFor="let item of history">{{ item }}</p>
-    </div>
-    <section id="card-list">
-        <div *ngFor="let pokemon of pokemons">
+    <section *ngIf="searchCompleted" id="card-list">
+        <div *ngFor="let pokemon of pokemonResult">
+            <app-playing-card [pokemon]="pokemon"></app-playing-card>
+        </div>
+    </section>
+
+    <p class="unknown" *ngIf="pokemonResult.length === 0 && searchCompleted">Sorry this pokemon is Unknown here. 😢</p>    
+    <p class="unknown" *ngIf="pokemonResult.length === 0 && searchCompleted">Try another search.</p>
+
+
+    <section  *ngIf="!searchCompleted" id="card-list">
+        <div  *ngFor="let pokemon of pokemons">
             <app-playing-card [pokemon]="pokemon"></app-playing-card>
         </div>
     </section>
