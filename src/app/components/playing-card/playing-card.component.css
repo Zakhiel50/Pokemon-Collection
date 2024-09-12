@@ -5,7 +5,8 @@
 	padding: 10px;
 	border-radius: 10px;
 	box-shadow: 5px 5px 10px 0 grey;
-	background-color: rgb(221, 221, 221);
+	background: rgb(222,222,222);
+background: linear-gradient(90deg, rgba(222,222,222,1) 0%, rgba(145,145,145,1) 48%, rgba(232,232,232,1) 100%);
 }
 
 .marginInside {
@@ -66,7 +67,8 @@ figure#art {
 	padding: 5px 5px 0 5px;
 	width: calc(100% - 10px);
 	overflow: hidden;
-	background-color: lightgrey;
+	background: rgb(222,222,222);
+background: linear-gradient(90deg, rgba(222,222,222,1) 0%, rgba(145,145,145,1) 48%, rgba(232,232,232,1) 100%);
 
 	img {
 		width: 100%;

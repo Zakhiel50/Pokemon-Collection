@@ -32,7 +32,6 @@ export class AppComponent {
   bgCFire: string = 'bgCFire';
   bgCGrass: string = 'bgCGrass';
   bgCWater: string = 'bgCWater';
-  pokedexNumber: number = 0;
   pokemonName: string = '';
 
   pokemonResult: Pokemon[] = [];
@@ -70,7 +69,7 @@ export class AppComponent {
     this.pokemons = [
       {
         pokedexNumber: 25,
-        index: this.pokedexNumber,
+        index: 25,
         iconType: `${this.pathImg}electrik.png`,
         backgroundColor: this.bgCThunder,
         pokemonImg: `${this.pathImg}pikachu.png`,
@@ -80,7 +79,7 @@ export class AppComponent {
         iconSecondAttack_type2: `${this.pathImg}electrik.png`,
         name: "Pikachu",
         hp: 60,
-        figureCaption: `N°0${this.pokedexNumber} Pikachu`,
+        figureCaption: `N°025 Pikachu`,
         firstAttack_name: "Geo Impact",
         firstAttack_strength: 60,
         firstAttack_description: "Attack with a electrik attack and great damages inflicted.",
@@ -93,7 +92,7 @@ export class AppComponent {
       },
       {
         pokedexNumber: 2,
-        index: this.pokedexNumber,
+        index: 2,
         iconType: `${this.pathImg}fire.png`,
         backgroundColor: this.bgCFire,
         pokemonImg: `${this.pathImg}charmander.png`,
@@ -103,7 +102,7 @@ export class AppComponent {
         iconSecondAttack_type2: '',
         name: "Charmander",
         hp: 60,
-        figureCaption: `N°00${this.pokedexNumber} Charmander`,
+        figureCaption: `N°002 Charmander`,
         firstAttack_name: "Ember",
         firstAttack_strength: 60,
         firstAttack_description: "Attack with a fire attack and great damages inflicted.",
@@ -116,7 +115,7 @@ export class AppComponent {
       },
       {
         pokedexNumber: 1,
-        index: this.pokedexNumber,
+        index: 1,
         iconType: `${this.pathImg}grass.png`,
         backgroundColor: this.bgCGrass,
         pokemonImg: `${this.pathImg}bulbasaur.png`,
@@ -126,7 +125,7 @@ export class AppComponent {
         iconSecondAttack_type2: '',
         name: "Bulbasaur",
         hp: 70,
-        figureCaption: `N°00${this.pokedexNumber} Bulbasaur`,
+        figureCaption: `N°001 Bulbasaur`,
         firstAttack_name: "Razor Leaf",
         firstAttack_strength: 50,
         firstAttack_description: "Attack with a grass attack.",
@@ -139,7 +138,7 @@ export class AppComponent {
       },
       {
         pokedexNumber: 3,
-        index: this.pokedexNumber,
+        index: 3,
         iconType: `${this.pathImg}water.png`,
         backgroundColor: this.bgCWater,
         pokemonImg: `${this.pathImg}squirtle.png`,
@@ -149,7 +148,7 @@ export class AppComponent {
         iconSecondAttack_type2: '',
         name: "Squirtle",
         hp: 70,
-        figureCaption: `N°00${this.pokedexNumber} Squirtle`,
+        figureCaption: `N°003 Squirtle`,
         firstAttack_name: "Bubble",
         firstAttack_strength: 50,
         firstAttack_description: "Attack with a big bubble.",
