@@ -14,33 +14,49 @@ import {FormsModule} from "@angular/forms"
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
-pathImg: string = "../../../assets/img/"
+  pathImg: string = "../../../assets/img/"
 
-search = model<string>('')
-actualSearch = model<string>(''); 
-history = model<string[]>([]);
+  search = model<string>('')
+  actualSearch = model<string>(''); 
+  history = model<string[]>([]);
 
-@Output() searchPokemonResult = new EventEmitter<string>();
-searchResult() {
-  this.searchPokemonResult.emit(this.search())
-}
+  @Output() searchPokemonResult = new EventEmitter<string>();
+  @Output() deleteSearchTerm = new EventEmitter<string>();
+  @Output() searchButtonPokemon = new EventEmitter();
 
-searchButtonPokemon = new EventEmitter();
+   /**
+   * Emit - Clean search term.
+   * @returns - nothing return.
+   */
+  cleanSearchTerm() {
+    this.deleteSearchTerm.emit(this.search())
+    this.actualSearch.set('')
+  }
 
-searchPokemon() {
-  this.addHistory()
+   /**
+   * Emit - Update search term and launch search.
+   * @returns - nothing return.
+   */
+  searchResult() {
+    this.searchPokemonResult.emit(this.search())
+  }
 
-  this.searchButtonPokemon.emit(this.search());
-  this.actualSearch.set(this.search())
-  this.search.set('')
-}
 
-updateSearch(value: string) {
-  this.search.set(value)
-  this.actualSearch.set(this.search())
-}
-addHistory () {
-  this.history().push(`${this.search()},`)
-}
-// 1:16:01  problemes: logique d'historique perdu + search.set se réinitialise à la place de search  (depuis avoir utilise "model")
+ /**
+   * Update search term and launch search.
+   * @param value value: string
+   * @returns - nothing return.
+   */
+  updateSearch(value: string) {
+    this.search.set(value)
+    this.actualSearch.set(this.search())
+  }
+
+   /**
+   * Add search to history and add ','.
+   * @returns - nothing return.
+   */
+  addHistory () {
+    this.history().push(`${this.search()},`)
+  }
 }

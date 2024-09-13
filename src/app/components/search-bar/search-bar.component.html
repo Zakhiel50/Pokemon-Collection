@@ -1,12 +1,15 @@
 <div id="search-bar">
     <input type="text" placeholder="Search..."  [ngModel]= "search()" (ngModelChange)="updateSearch($event)">
+    <div class="container-btn-delete-term">
+        <button (click)="cleanSearchTerm()" class="delete-term">x</button>
+    </div>
     <button (click)="searchResult()">
         <img src="{{pathImg}}search-bar.png"alt="">
     </button>
 </div>
 <div class="container-actual-search">
-    <p class="search-name" *ngIf="actualSearch() !== '' ">Your search:</p>
-    <p class="search-result"> {{ actualSearch()}}</p>
+    <p class="search-name" *ngIf="actualSearch() !== ''">Your search:</p>
+    <p class="search-result" *ngIf="actualSearch() !== '' "> {{ actualSearch()}}</p>
 </div>
 <div class="history">
     <p *ngIf="history().length !== 0 ">Search History:</p>

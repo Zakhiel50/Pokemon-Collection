@@ -2,6 +2,7 @@
     <app-search-bar
     [(search)]="search"
     (searchPokemonResult)="searchInput($event)"
+    (deleteSearchTerm)="deleteTerm()"
     />
     <section *ngIf="searchCompleted" id="card-list">
         <div *ngFor="let pokemon of pokemonResult">

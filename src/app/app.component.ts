@@ -50,9 +50,24 @@ export class AppComponent {
     this.searchResult = term;
     this.returnPokemonResult(this.search());
     this.searchCompleted = true;
-    
   }
-// je dois récupérer le nom et le numPokedex
+
+  /**
+   * Clean search term.
+   * @returns - nothing return.
+   */
+  deleteTerm() {
+    this.searchResult = '';
+    this.actualSearch.set(' ')
+    this.search.set('')
+    this.searchCompleted = false
+  }
+  
+  /**
+   * Search term (pokémon) and update pokemonResult - type: string.
+   * @param term - This is term used in searchBar. type: string
+   * @returns - pokemonResult.
+   */
   returnPokemonResult(term: string) {
     return this.pokemonResult = this.pokemons
     .filter((pokemon: Pokemon) => pokemon.name.toLowerCase()

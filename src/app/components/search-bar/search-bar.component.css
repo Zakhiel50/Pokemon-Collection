@@ -33,7 +33,6 @@ button:hover {
     background-color: #909090;
 }
 
-
 .history {
     min-height: 50px;
     display: flex;
@@ -61,7 +60,21 @@ button:hover {
         display: flex;
         justify-content: flex-start;
     }
+    
 }
+
+.container-btn-delete-term {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.delete-term {
+    all: unset;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 50px;
+    text-align: center;
+} 
 
 @media screen and (width <= 500px) {
     #search-bar {
