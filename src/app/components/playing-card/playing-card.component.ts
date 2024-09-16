@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 
 @Component({
@@ -13,5 +13,5 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 })
 export class PlayingCardComponent {
 pathImg: string = "../../../assets/img/"
-@Input({required: true}) pokemon: Pokemon = new Pokemon();
+pokemon = input<Pokemon>(new Pokemon());
 }

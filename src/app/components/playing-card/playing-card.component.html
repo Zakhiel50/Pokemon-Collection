@@ -1,17 +1,17 @@
 <div id="card">
-    <div id="inside" class= "{{pokemon.backgroundColor}} marginInside">
+    <div id="inside" class= "{{pokemon().backgroundColor}} marginInside">
         <header>
             <div class="left">
-                <div id="name">{{pokemon.name}}</div>
+                <div id="name">{{pokemon().name}}</div>
             </div>
             <div class="right">
-                <div id="hp">{{pokemon.hp}}</div>
-                <img src="{{pokemon.pathImg}}{{pokemon.iconType}}" alt="electrik energy icon" class="energy icon">
+                <div id="hp">{{pokemon().hp}}</div>
+                <img src="{{pokemon().pathImg}}{{pokemon().iconType}}" alt="electrik energy icon" class="energy icon">
             </div>
         </header>
         <figure id="art">
-            <img src="{{pokemon.pathImg}}{{pokemon.pokemonImg}}" alt="{{pokemon.name}}">
-            <figcaption>{{pokemon.figureCaption}}</figcaption>
+            <img src="{{pokemon().pathImg}}{{pokemon().pokemonImg}}" alt="{{pokemon().name}}">
+            <figcaption>{{pokemon().figureCaption}}</figcaption>
         </figure>
 
         <div id="capacities">
@@ -19,31 +19,31 @@
             <div class="capacity">
                 <div class="main">
                     <div class="cost">
-                        <img class="icon energy" src="{{pokemon.pathImg}}{{pokemon.iconFirstAttack_type1}}" alt="electrik energy icon">                         
-                        <img *ngIf="pokemon.iconFirstAttack_type2" class="icon energy" src="{{pokemon.pathImg}}{{pokemon.iconFirstAttack_type2}}" alt="electrik energy icon">            
+                        <img class="icon energy" src="{{pokemon().pathImg}}{{pokemon().iconFirstAttack_type1}}" alt="electrik energy icon">                         
+                        <img *ngIf="pokemon().iconFirstAttack_type2" class="icon energy" src="{{pokemon().pathImg}}{{pokemon().iconFirstAttack_type2}}" alt="electrik energy icon">            
                     </div>
-                    <div class="name">{{pokemon.firstAttack_name}}</div>
-                    <div class="damage">{{pokemon.firstAttack_strength}}</div>
+                    <div class="name">{{pokemon().firstAttack_name}}</div>
+                    <div class="damage">{{pokemon().firstAttack_strength}}</div>
                 </div>
             </div>
-            <div class="description">{{pokemon.firstAttack_description}}</div>
+            <div class="description">{{pokemon().firstAttack_description}}</div>
 
-            <div *ngIf="pokemon.secondAttack" class="capacity">
+            <div *ngIf="pokemon().secondAttack" class="capacity">
                 <div class="main">
                     <div class="cost">
-                        <img class="icon energy" src="{{pokemon.pathImg}}{{pokemon.iconSecondAttack_type1}}" alt="electrik energy icon">                         
-                        <img  class="icon energy" src="{{pokemon.pathImg}}{{pokemon.iconSecondAttack_type2}}" alt="electrik energy icon">            
+                        <img class="icon energy" src="{{pokemon().pathImg}}{{pokemon().iconSecondAttack_type1}}" alt="electrik energy icon">                         
+                        <img  class="icon energy" src="{{pokemon().pathImg}}{{pokemon().iconSecondAttack_type2}}" alt="electrik energy icon">            
                     </div>
-                    <div class="name">{{pokemon.secondAttack_name}}</div>
-                    <div class="damage">{{pokemon.secondAttack_strength}}</div>
+                    <div class="name">{{pokemon().secondAttack_name}}</div>
+                    <div class="damage">{{pokemon().secondAttack_strength}}</div>
                 </div>
             </div>
-            <div *ngIf="pokemon.secondAttack" class="description">{{pokemon.secondAttack_description}}</div>
+            <div *ngIf="pokemon().secondAttack" class="description">{{pokemon().secondAttack_description}}</div>
         </div>
     </div>
-    <div id="inside" class= "{{pokemon.backgroundColor}} weakness">
+    <div id="inside" class= "{{pokemon().backgroundColor}} weakness">
         <p class="weakness-text">Weakness</p>
-        <img src="{{pokemon.pathImg}}{{pokemon.weaknessIcon}}" alt="electrik energy icon" class="energy icon weaknessIcon">
+        <img src="{{pokemon().pathImg}}{{pokemon().weaknessIcon}}" alt="electrik energy icon" class="energy icon weaknessIcon">
         <p>x2</p>
     </div>
     
