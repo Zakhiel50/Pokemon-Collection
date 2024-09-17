@@ -3,6 +3,7 @@ import { PlayingCardComponent } from './components/playing-card/playing-card.com
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CommonModule} from '@angular/common';
 import { PokemonsListComponent } from "./pages/pokemons-list/pokemons-list.component";
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { PokemonsListComponent } from "./pages/pokemons-list/pokemons-list.compo
     PlayingCardComponent,
     SearchBarComponent,
     CommonModule,
-    PokemonsListComponent
+    PokemonsListComponent,
+    RouterOutlet
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

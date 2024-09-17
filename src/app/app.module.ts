@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PokemonsListComponent } from './pages/pokemons-list/pokemons-list.component';
 
@@ -11,7 +11,7 @@ import { PokemonsListComponent } from './pages/pokemons-list/pokemons-list.compo
     BrowserModule,
     RouterModule,
     AppComponent,
-    PokemonsListComponent
+    PokemonsListComponent,
   ],
   providers: [],
   bootstrap: []

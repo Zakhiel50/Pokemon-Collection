@@ -162,8 +162,8 @@ export class PokemonService {
     const pokemonAdded = pokemon
 
     pokemonAdded.pokedexNumber = this.currentPokedexNumber;
-    this.pokemons.push(pokemonAdded);
     this.currentPokedexNumber++
+    this.pokemons.push(pokemonAdded);
     this.save();
 
     return pokemonAdded;
