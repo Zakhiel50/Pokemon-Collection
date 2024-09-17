@@ -11,10 +11,25 @@ export class PokemonService {
   pokemons: Pokemon[] = [];
   currentPokedexNumber: number = 1;
 
-  bgCThunder: string = 'bgCThunder';
+  bgCThunder: string = 'bgCFire';
   bgCFire: string = 'bgCFire';
   bgCGrass: string = 'bgCGrass';
   bgCWater: string = 'bgCWater';
+
+  getBackgroundColorForType(type: string): string {
+    switch(type.toLowerCase()) {
+      case 'electrik':
+        return 'yellow';
+      case 'fire':
+        return 'red';
+      case 'water':
+        return 'blue';
+      case 'grass':
+        return 'green';
+      default:
+        return 'grey';
+    }
+  }
 
   constructor() {
     this.load()
@@ -22,7 +37,6 @@ export class PokemonService {
 
   private save() {
     localStorage.setItem('pokemons', JSON.stringify(this.pokemons))
-    //localStorage.removeItem('pokemons')
   }
 
   private load() {
@@ -41,9 +55,9 @@ export class PokemonService {
      this.pokemons = [
       {
         pokedexNumber: 25,
-        index: 25,
+        index: this.currentPokedexNumber++,
         iconType: `${this.pathImg}electrik.png`,
-        backgroundColor: this.bgCThunder,
+        backgroundColor: this.getBackgroundColorForType('electrik'),
         pokemonImg: `${this.pathImg}pikachu.png`,
         iconFirstAttack_type1: `${this.pathImg}electrik.png`,
         iconFirstAttack_type2: ``,
@@ -64,9 +78,9 @@ export class PokemonService {
       },
       {
         pokedexNumber: 2,
-        index: 2,
+        index: this.currentPokedexNumber++,
         iconType: `${this.pathImg}fire.png`,
-        backgroundColor: this.bgCFire,
+        backgroundColor: this.getBackgroundColorForType('fire'),
         pokemonImg: `${this.pathImg}charmander.png`,
         iconFirstAttack_type1: `${this.pathImg}fire.png`,
         iconFirstAttack_type2: '',
@@ -87,9 +101,9 @@ export class PokemonService {
       },
       {
         pokedexNumber: 1,
-        index: 1,
+        index: this.currentPokedexNumber++,
         iconType: `${this.pathImg}grass.png`,
-        backgroundColor: this.bgCGrass,
+        backgroundColor: this.getBackgroundColorForType('grass'),
         pokemonImg: `${this.pathImg}bulbasaur.png`,
         iconFirstAttack_type1: `${this.pathImg}grass.png`,
         iconFirstAttack_type2: `${this.pathImg}grass.png`,
@@ -110,9 +124,9 @@ export class PokemonService {
       },
       {
         pokedexNumber: 3,
-        index: 3,
+        index: this.currentPokedexNumber++,
         iconType: `${this.pathImg}water.png`,
-        backgroundColor: this.bgCWater,
+        backgroundColor: this.getBackgroundColorForType('water'),
         pokemonImg: `${this.pathImg}squirtle.png`,
         iconFirstAttack_type1: `${this.pathImg}water.png`,
         iconFirstAttack_type2: `${this.pathImg}water.png`,

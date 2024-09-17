@@ -1,11 +1,12 @@
 export class Pokemon {
+    
 
     index: number = 0 ;
     pokedexNumber: number = 0;
     pathImg: string = "../../../assets/img/"
     iconType: string= "electrik.png"
     pokemonImg: string= "pikachu.png"
-    backgroundColor: string = 'rgba(255, 252, 81, 0.676)';
+    backgroundColor: string = 'yellow';
     iconFirstAttack_type1: string = "electrik.png"
     iconFirstAttack_type2?: string;
     iconSecondAttack_type1?: string = "electrik.png"

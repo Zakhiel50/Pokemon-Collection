@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, Input, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 
 @Component({
