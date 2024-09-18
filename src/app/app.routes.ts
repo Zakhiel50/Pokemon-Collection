@@ -13,7 +13,16 @@ export const routes: Routes = [
     component: PokemonsListComponent
 }, {
     path: 'pokemon',
-    component: PokemonComponent
+    children: [
+        {
+        path: '',
+        component: PokemonComponent,
+        },
+        {
+            path: ':id',
+            component: PokemonComponent
+        }
+    ]
 }, {
     path: '**',
     component: NotFoundComponent

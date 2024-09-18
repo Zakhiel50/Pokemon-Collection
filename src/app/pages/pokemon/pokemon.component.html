@@ -1,1 +1,6 @@
-<p>pokemon works!</p>
+@if (pokemonId()) {
+    <p>Pokémon {{pokemonId()}} is here !!</p>
+    <button (click)="next()">Next</button>
+}
+
+<p>Pokémons !!</p>
