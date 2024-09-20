@@ -1,6 +1,142 @@
-@if (pokemonId()) {
-    <p>Pokémon {{pokemonId()}} is here !!</p>
-    <button (click)="next()">Next</button>
+@if(pokemonId()) {
+    <div>
+        <p style="width: 100%; text-align: center;">Pokémon {{pokemonId()}} is here !!</p>
+        <div class="container-btn-change-pokemon">
+            <button (click)="previous()">Previous</button>
+            <button (click)="next()">Next</button>
+        </div>
+    </div>
 }
 
-<p>Pokémons !!</p>
+<form [formGroup]="formGroup" (submit)="submit($event)">
+    <div class="form-field">
+        <div class="container-input">
+            <label for="name">Name</label>
+            <input placeholder="Pikachu" class="field" id="name" name="name" type="text" formControlName="name">
+            <button class="deleteTerm" (click)="cleanInput(formGroup.get('name'))">x</button>
+        </div> 
+        @if(isFieldValid('name'))  {
+            <div class="error">
+                This field is required!
+            </div>    
+        }  
+    </div>
+
+    <div class="form-field">
+        <div class="container-input">
+            <label for="pokedexNumber">n° Pokedex</label>
+            <input placeholder="25" class="field" id="pokedexNumber" name="pokedexNumber" type="number" formControlName="pokedexNumber">
+            <button class="deleteTerm" (click)="cleanInput(formGroup.get('pokedexNumber'))">x</button>
+        </div>
+        @if(isFieldValid('pokedexNumber')) {
+            <div class="error">
+                Enter a number between 1 to 151
+            </div>
+        }
+    </div>
+
+    <div class="form-field">
+        <div class="container-input">
+            <label for="hp">HP</label>
+            <input placeholder="50" class="field" id="hp" name="hp" type="number" formControlName="hp">
+            <button class="deleteTerm" (click)="cleanInput(formGroup.get('hp'))">x</button>
+        </div>
+        @if(isFieldValid('hp')) {
+            <div class="error">
+                Enter a number between 1 to 200
+            </div>
+        }
+    </div>
+
+    <div class="form-field">
+        <div class="container-input">
+            <label for="image">Image</label>
+            <input class="field image-input" id="image" name="image" type="file" (change)="onFileChange($event)">
+            <button class="deleteTerm" (click)="cleanInput(formGroup.get('pokemonImg'))">x</button>
+        </div>
+        @if(isFieldValid("pokemonImg")) {
+            <div class="error">
+                Image is required!
+            </div>
+        }
+        @if (formGroup.get('pokemonImg')?.value) {
+            <img class="user-img" [src]="formGroup.get('pokemonImg')?.value" alt="User's Pokemon Image" style="max-width: 200px;">
+
+        }
+    </div>
+
+    <div class="form-field">
+        <div class="container-input">
+            <label for="type">Type</label>
+            <select class="select" id="type" name="type" formControlName="type">
+                @for(type of pokemonTypes; track type) {
+                    <option [value]="type">{{type}}</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-field">
+        <div class="container-input">
+            <label for="name">Attack name</label>
+            <input placeholder="Thunder" class="field" id="attackName" name="attackName" type="text" formControlName="attackName">
+            <button class="deleteTerm" (click)="cleanInput(formGroup.get('attackName'))">x</button>
+        </div> 
+        @if(isFieldValid('attackName'))  {
+            <div class="error">
+                This field is required!
+            </div>    
+        }  
+    </div>
+
+    <div class="form-field">
+        <div class="container-input">
+            <label for="attackStrength">Attack strength</label>
+            <input placeholder="40" class="field" id="attackStrength" name="attackStrength" type="number" formControlName="attackStrength">
+            <button class="deleteTerm" (click)="cleanInput(formGroup.get('attackStrength'))">x</button>
+        </div>
+        @if(isFieldValid('attackStrength')) {
+            <div class="error">
+                Enter a number between 1 to 200
+            </div>
+        }
+    </div>
+
+    <div class="form-field">
+        <div class="container-input">
+            <label for="name">Attack description</label>
+            <input placeholder="An elektrick attack" class="field" id="attackDescription" name="attackDescription" type="text" formControlName="attackDescription">
+            <button class="deleteTerm" (click)="cleanInput(formGroup.get('attackDescription'))">x</button>
+        </div> 
+        @if(isFieldValid('attackDescription'))  {
+            <div class="error">
+                This field is required!
+            </div>    
+        }  
+    </div>
+
+    <div class="form-field">
+        <div class="container-input">
+            <label for="attackType">Attack type</label>
+            <select class="select" id="attackType" name="attackType" formControlName="attackType">
+                @for(attackType of pokemonAttackTypes; track attackType) {
+                    <option [value]="attackType">{{attackType}}</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-field">
+        <div class="container-input">
+            <label for="type">Weakness</label>
+            <select class="select" id="weakness" name="weakness" formControlName="weakness">
+                @for(weakness of pokemonWeakness; track weakness) {
+                    <option [value]="weakness">{{weakness}}</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="container-btn">
+        <button class="btn" type="submit" [disabled]="formGroup.invalid">SAVE</button>
+    </div>
+</form>
